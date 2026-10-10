@@ -1,0 +1,85 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: var(--font-karla), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-oswald), ui-sans-serif, system-ui, sans-serif;
+  --font-script: var(--font-great-vibes), cursive;
+
+  /* Paleta: aurul original (#dfa25f) păstrat, bleumarinul înlocuit cu un maro cald */
+  --color-gold: #dfa25f;
+  --color-gold-dark: #b97d3c;
+  --color-crust: #8a5a2b;
+  --color-cream: #f8f2e9;
+  --color-flour: #fffcf7;
+  --color-espresso: #1e1915;
+  --color-espresso-soft: #2a231d;
+  --color-ink: #2b2420;
+  --color-muted: #75695f;
+  --color-line: #e6dccd;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-flour text-ink font-sans antialiased;
+  }
+  ::selection {
+    @apply bg-gold text-espresso;
+  }
+}
+
+/* Texturile originale din Webflow, nuanțate spre paleta caldă */
+@utility texture {
+  background-color: var(--color-cream);
+  background-image: url('/images/pattern.jpg');
+  background-size: 16px;
+  background-blend-mode: multiply;
+}
+
+@utility texture-dark {
+  background-color: var(--color-espresso);
+  background-image: url('/images/bg-pattern.jpg');
+  background-blend-mode: luminosity;
+}
+
+@keyframes heroZoom {
+  from {
+    transform: scale(1.12);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.hero-zoom {
+  animation: heroZoom 20s ease-out forwards;
+}
+
+/* Animație discretă la scroll (vezi components/reveal.tsx) */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.8s ease-out,
+    transform 0.8s ease-out;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .hero-zoom {
+    animation: none;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
