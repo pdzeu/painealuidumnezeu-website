@@ -39,13 +39,20 @@ Docker Desktop/WSL forwards the port, so http://localhost:3000 opens in the Wind
 
 ## Production / deploy
 
-`restart.sh` (run on the server) removes `painealuidumnezeu-container`, rebuilds the image
-`painealuidumnezeu-website` and runs it on `3001:3001`.
+The live site (painealuidumnezeu.ro) is hosted on **Railway**, which deploys automatically
+from the `main` branch on GitHub (it builds the repo's `Dockerfile`). So:
+
+- **Pushing to `main` = deploying to production.** No server login, `git pull` or
+  `restart.sh` needed. Always build locally first (a failed build would fail the deploy).
+- Treat every push to `main` as a production release — only do it when the user says so.
+- `restart.sh` is a leftover for running the image on a plain Docker host (`3001:3001`);
+  it is not part of the Railway deploy.
 
 ## Git
 
 - Remote: `git@github.com:pdzeu/painealuidumnezeu-website.git`, default branch `main`.
-- Only commit/push when the user explicitly says so. Work on a feature branch
-  (e.g. `menu-update-YYYY-MM-DD`), not directly on `main`, unless told otherwise.
+- Only commit/push when the user explicitly says so. Pushing to `main` deploys to
+  production via Railway; use a feature branch (e.g. `menu-update-YYYY-MM-DD`) if the user
+  wants the changes saved but not live yet.
 - Push needs the deploy key: `eval "$(ssh-agent -s)" && ssh-add ~/.ssh/painealuidumnezeu`
   (that is what `local_test/start_docker.sh` does) in the same shell as `git push`.

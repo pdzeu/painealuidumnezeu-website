@@ -13,8 +13,8 @@ Next.js app. **All visible text is in Romanian, with proper diacritics (ă â î
 
 ```
 /                           repo root (git: github.com/pdzeu/painealuidumnezeu-website, branch main)
-├── Dockerfile              2-stage build (node:22-alpine) → standalone server on PORT 3001
-├── restart.sh              rebuilds image + runs container "painealuidumnezeu-container" on 3001
+├── Dockerfile              2-stage build (node:22-alpine) → standalone server; Railway builds this
+├── restart.sh              legacy: rebuild + run on a plain Docker host (3001); not used by Railway
 ├── local_test/             git-ignored helper scripts (ssh-agent for the deploy key)
 └── painealuidumnezeu/      the Next.js app (run all npm commands here)
     ├── app/                App Router pages
@@ -68,4 +68,5 @@ Sections alternate `texture` and `bg-cream`; content is `mx-auto max-w-7xl px-4 
 ## Running / deploying
 
 See the `run-local` skill. Short version: WSL Node is 18 (too old for Next 16), so build
-with Docker. Production runs via `restart.sh` on port 3001.
+with Docker. Production is hosted on **Railway**, auto-deployed from the `main` branch —
+a push to `main` goes live.

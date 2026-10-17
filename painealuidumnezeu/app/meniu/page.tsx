@@ -63,18 +63,19 @@ export default function MenuPage() {
       <PageHero title="Meniu" crumb="Meniu" image="/images/hero-menu.jpg" />
 
       <nav aria-label="Categorii meniu" className="sticky top-[68px] z-40 md:top-[62px] border-b border-line bg-flour/95 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl items-center gap-6 overflow-x-auto px-4 py-3 md:justify-center md:px-8">
+        {/* Pe telefon grupurile stau unul sub altul, pe desktop pe același rând */}
+        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-2.5 md:flex-row md:items-center md:justify-center md:gap-6 md:px-8 md:py-3">
           {menuGroups.map((group, g) => (
-            <div key={group.id} className={`flex shrink-0 items-center gap-2 ${g ? 'border-l border-line pl-6' : ''}`}>
-              <a href={`#${group.id}`} className="mr-1 font-script text-2xl leading-none text-gold-dark">
+            <div key={group.id} className={`flex items-center gap-1.5 md:gap-2 ${g ? 'md:border-l md:border-line md:pl-6' : ''}`}>
+              <a href={`#${group.id}`} className="w-[4.5rem] shrink-0 font-script text-xl leading-none text-gold-dark md:mr-1 md:w-auto md:text-2xl">
                 {group.label}
               </a>
-              <ul className="flex gap-2">
+              <ul className="flex flex-1 gap-1.5 md:flex-none md:gap-2">
                 {group.nav.map((item) => (
-                  <li key={item.id} className="shrink-0">
+                  <li key={item.id} className="flex-1 md:flex-none">
                     <a
                       href={`#${item.id}`}
-                      className="block rounded-full border border-line px-4 py-2 font-display text-sm uppercase tracking-[0.15em] text-ink transition-colors hover:border-gold hover:bg-gold hover:text-espresso"
+                      className="block rounded-full border border-line px-2 py-1.5 text-center font-display text-xs uppercase tracking-[0.1em] text-ink md:px-4 md:py-2 md:text-sm md:tracking-[0.15em] transition-colors hover:border-gold hover:bg-gold hover:text-espresso"
                     >
                       {item.label}
                     </a>
@@ -88,7 +89,7 @@ export default function MenuPage() {
 
       {menuGroups.map((group) => (
         <div key={group.id}>
-          <section id={group.id} className="texture-dark scroll-mt-32 py-12 md:py-14">
+          <section id={group.id} className="texture-dark scroll-mt-44 md:scroll-mt-32 py-12 md:py-14">
             <Reveal className="mx-auto max-w-7xl px-4 text-center md:px-8">
               <SectionHeading title={group.label} tone="light" />
               <p className="mt-5 font-display text-sm uppercase tracking-[0.2em] text-white/70">{group.tagline}</p>
@@ -96,7 +97,7 @@ export default function MenuPage() {
           </section>
 
           {categoriesOf(group.sections).map(({ category, layout, id }, index) => (
-            <section key={id} id={id} className={`scroll-mt-32 py-10 md:py-14 ${index % 2 ? 'bg-cream' : 'texture'}`}>
+            <section key={id} id={id} className={`scroll-mt-44 md:scroll-mt-32 py-10 md:py-14 ${index % 2 ? 'bg-cream' : 'texture'}`}>
               <div className="mx-auto max-w-7xl px-4 md:px-8">
                 <Reveal className="text-center">
                   <h2 className="font-display text-2xl font-semibold uppercase tracking-wide text-espresso md:text-3xl">
