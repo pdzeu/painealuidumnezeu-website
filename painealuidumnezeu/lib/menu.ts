@@ -9,11 +9,15 @@ export type MenuItem = {
   kcal?: string
   macros?: string
   badge?: string
+  /** alergeni, separați prin virgulă */
+  allergens?: string
   image?: string
 }
 
 export type MenuCategory = {
   title: string
+  /** mențiune scurtă afișată sub titlu, ex. „Numai în weekend” */
+  note?: string
   items: MenuItem[]
 }
 
@@ -269,115 +273,246 @@ export const menuSections: MenuSection[] = [
     "layout": "list",
     "categories": [
       {
-        "title": "De pofta",
+        "title": "De întins pe pâine",
         "items": [
           {
-            "name": "De intins pe paine",
+            "name": "De întins pe pâine",
             "price": "67",
-            "description": "Salata de vinete, Zacusca, Icre, mix paine",
-            "weight": "600 g",
-            "kcal": "821",
-            "macros": "11.17g proteine, 104.1g grasimi, 10.95g carbo"
-          },
-          {
-            "name": "Omleta Pe Plita",
-            "price": "35",
-            "description": "oua, fontina, cotto, rucola, rosii cherry",
-            "weight": "600 g",
-            "kcal": "646",
-            "macros": "52.5g proteine, 41.5g grasimi, 12.4g carbo"
-          },
-          {
-            "name": "Matinal",
-            "price": "39",
-            "description": "brioche, fontina, oua, prosciutto cotto, rucola, rosii cherry",
-            "weight": "600 g",
-            "kcal": "438",
-            "macros": "38g proteine, 28g grasimi, 4.7g carbo"
+            "description": "Icre de știucă (icre, ulei de floarea soarelui, ceapă, sare)\nSalată de vinete (vinete coapte, ulei de floarea soarelui, sare)\nZacuscă făcută în casă (morcov, ceapă, ardei copți, suc de roșii)\nHumus oriental (năut, tahini, stafide-coniac, ardei copt, roșii deshidratate, suc de lămâie, apă minerală)\nMix pâine 80 g",
+            "weight": "450 g",
+            "allergens": "pește, gluten"
           }
         ]
       },
       {
-        "title": "Sandwich",
+        "title": "De înmuiat pâine",
         "items": [
           {
-            "name": "Sandwich vegetarian",
-            "price": "45",
-            "description": "pesto, stracciatella, rosii cherry, pleurotus, ciabatta",
-            "weight": "642 g",
-            "macros": "18.2g proteine, 54.8g grasimi, 61g carbo"
-          },
-          {
-            "name": "Sandwich putin iute",
-            "price": "50",
-            "description": "schiaciata, crema branza, vinete coapte, salam ventricina picant",
-            "weight": "535 g",
-            "macros": "24g proteine, 43g grasimi, 8g carbo"
-          },
-          {
-            "name": "Bagel somon",
-            "price": "55",
-            "description": "Bagel, crema branza, somon, rucola",
-            "weight": "540 g",
-            "macros": "30.9g proteine, 26.1g grasimi, 39g carbo"
-          },
-          {
-            "name": "Sandwich prosciuto cotto",
-            "price": "64",
-            "description": "focaccia, pesto, stracciatella, rosii cherry, prosciutto cotto",
-            "weight": "1130 g",
-            "macros": "48g proteine, 50g grasimi, 104g carbo"
+            "name": "Salată vară",
+            "price": "35",
+            "description": "roșii | castraveți | ardei gras | ceapă | dressing",
+            "weight": "350 g",
+            "allergens": "gluten"
           },
           {
             "name": "French dip sandwich",
             "price": "69",
-            "description": "ceafa vita, sos hrean, ceapa caramelizata, fontina, sos dip, baguette",
-            "weight": "1506 g",
-            "macros": "59.5g proteine, 102g grasimi, 46g carbo"
+            "description": "baghetă franțuzească | ceafă de vită coaptă lent de noi | ceapă caramelizată | cașcaval Fontina | sos de hrean | supă de vită",
+            "weight": "350 g",
+            "allergens": "gluten, lactate, muștar"
           },
           {
-            "name": "Sandwich prosciuto crudo",
+            "name": "Supa zilei",
+            "price": "39",
+            "description": "Întrebați colegii sau bucătarul!",
+            "weight": "300 ml",
+            "allergens": "lactate"
+          }
+        ]
+      },
+      {
+        "title": "Cu pâine de dimineață",
+        "items": [
+          {
+            "name": "Omletă pe plită",
+            "price": "35",
+            "description": "ou | cașcaval Fontina | prosciutto cotto | unt",
+            "weight": "280 g / 400 g",
+            "allergens": "ouă, lactate"
+          },
+          {
+            "name": "Sandwich matinal",
+            "price": "39",
+            "description": "pain brioche | cașcaval Fontina | prosciutto cotto | 2x ou ochi | unt",
+            "weight": "300 g",
+            "allergens": "gluten, ouă, lactate"
+          },
+          {
+            "name": "Scramble în croissant",
+            "price": "39",
+            "description": "cremă de brânză | unt | lapte | ou | prosciutto crudo | civas",
+            "weight": "250 g",
+            "badge": "Nou",
+            "allergens": "gluten, ouă, lactate"
+          },
+          {
+            "name": "Ouă turcești",
+            "price": "45",
+            "description": "ouă poșate | humus | ulei picant | ulei de busuioc",
+            "weight": "300 g",
+            "badge": "Nou",
+            "allergens": "gluten, ouă, lactate"
+          },
+          {
+            "name": "Omletă în brioche sandwich",
+            "price": "39",
+            "description": "ou | ulei de floarea soarelui | sos maioneză | brânză feta | castravete | roșii grase | sare",
+            "weight": "300 g",
+            "badge": "Nou",
+            "allergens": "gluten, ouă, lactate"
+          }
+        ]
+      },
+      {
+        "title": "Doar salate",
+        "items": [
+          {
+            "name": "Salată brânză de capră cu miere",
+            "price": "45",
+            "description": "mix salată (spanac, rucola, romană) | dressing (miere, ulei de măsline, suc de lămâie, muștar Dijon) | brânză de capră",
+            "weight": "250 g",
+            "badge": "Nou",
+            "allergens": "lactate, muștar"
+          },
+          {
+            "name": "Salată italiană",
+            "price": "30",
+            "description": "parmezan | roșii cherry | oțet | mix salată (spanac, rucola, romană) | dressing mediteranean | reducție de aceto",
+            "weight": "250 g",
+            "allergens": "lactate"
+          },
+          {
+            "name": "Salată cu creveți sotați",
             "price": "55",
-            "description": "pesto, stracciatella, rosii cherry, prosciutto cotto, focaccia",
-            "weight": "1130 g",
-            "macros": "44g proteine, 50g grasimi, 104g carbo"
-          },
-          {
-            "name": "Sandwich mortadella",
-            "description": "focaccia, rucola, pesto, stracciatella, mortadella",
-            "weight": "1084 g",
-            "macros": "38g proteine, 64g grasimi, 105g carbo"
+            "description": "salată romană | dressing Caesar | crutoane | creveți sotați în unt și vin",
+            "weight": "250 g",
+            "badge": "Nou"
           }
         ]
       },
       {
-        "title": "Special",
+        "title": "Pâine toată ziua",
         "items": [
           {
-            "name": "Burger vita",
+            "name": "Mortadella în focaccia",
+            "price": "55",
+            "description": "focaccia | pesto de busuioc | mortadella pe plită | stracciatella | rucola",
+            "weight": "300 g",
+            "allergens": "gluten, lactate, nuci și derivate"
+          },
+          {
+            "name": "Prosciutto cotto în focaccia",
+            "price": "64",
+            "description": "focaccia | pesto de busuioc | roșii confiate | prosciutto cotto | stracciatella",
+            "weight": "330 g",
+            "allergens": "gluten, lactate"
+          },
+          {
+            "name": "Burger vită",
             "price": "58",
-            "description": "sos hrean, carne, bbq sos, rosie, castravete murat, bacon, cedar, chifla",
-            "weight": "1243 g",
-            "macros": "56g proteine, 72.5g grasimi, 63g carbo"
+            "description": "chiflă brioche cu susan | chiftea din carne de vită Argentina | roșii | cheddar | castraveți murați",
+            "weight": "350 g",
+            "allergens": "gluten, ouă, lactate, susan"
+          },
+          {
+            "name": "Smashed burger",
+            "price": "58",
+            "description": "chiflă artizanală cu maia, lapte și unt 82% grăsime | carne de vită | bacon | ceapă caramelizată | cheddar",
+            "weight": "300 g",
+            "allergens": "gluten, ouă, lactate"
+          },
+          {
+            "name": "Veggie sandwich",
+            "price": "45",
+            "description": "ciabatta | pleurotus copt | pesto de busuioc | stracciatella | roșii cherry confiate | rucola",
+            "weight": "330 g",
+            "allergens": "gluten, lactate, susan"
+          },
+          {
+            "name": "Bagel cu somon",
+            "price": "45",
+            "description": "bagel | cremă de brânză cu condimente | somon afumat | salată",
+            "weight": "300 g",
+            "allergens": "gluten, lactate, susan"
+          },
+          {
+            "name": "Creveți în brioche",
+            "price": "50",
+            "description": "chiflă brioche cu susan | creveți în pesmet tempura | mix salată | maioneză picantă",
+            "weight": "300 g",
+            "allergens": "gluten, lactate, susan"
+          },
+          {
+            "name": "Sandwich muncitoresc",
+            "price": "25",
+            "description": "chiflă din aluat malaxat cu muștar | parizer pane",
+            "weight": "300 g",
+            "allergens": "gluten, muștar"
+          },
+          {
+            "name": "Sardine sandwich",
+            "price": "45",
+            "description": "baghetă franțuzească | sardine în ulei de măsline MissCan (Portugalia, captură sălbatică) | lămâie | ou | ceapă murată | capere prăjite",
+            "weight": "350 g",
+            "badge": "Nou",
+            "allergens": "gluten, ouă"
+          },
+          {
+            "name": "Toast cu ton",
+            "price": "49",
+            "description": "toast cu pesto de pătrunjel | ton | capere | ceapă | muștar | maioneză | ou fiert",
+            "weight": "300 g",
+            "badge": "Nou",
+            "allergens": "gluten, muștar, ouă"
+          },
+          {
+            "name": "Toast cu guacamole",
+            "price": "55",
+            "description": "toast cu pesto de pătrunjel | ou poșat | guacamole | cremette | unt aromatizat | cașcaval Fontina | sos olandez",
+            "weight": "300 g",
+            "badge": "Nou",
+            "allergens": "gluten, muștar, ouă"
+          },
+          {
+            "name": "Hot dog clasic",
+            "price": "50",
+            "description": "baghetă cu susan | crenvurști | muștar | ketchup",
+            "weight": "300 g",
+            "badge": "Nou",
+            "allergens": "gluten, muștar, susan"
+          },
+          {
+            "name": "Hot dog trufă",
+            "price": "58",
+            "description": "baghetă cu susan | crenvurști | salată iceberg | salsa de trufe | bacon | maioneză | castravete murat | sos cheddar | ceapă crocantă",
+            "weight": "300 g",
+            "badge": "Nou",
+            "allergens": "gluten, ouă, susan"
+          },
+          {
+            "name": "Hot dog picant",
+            "price": "50",
+            "description": "baghetă cu susan | crenvurști | salată iceberg | ulei picant | chorizo | maioneză | castravete murat | sos cheddar | ceapă crocantă | sriracha",
+            "weight": "300 g",
+            "badge": "Nou",
+            "allergens": "gluten, ouă, susan"
+          },
+          {
+            "name": "Pâinaș – aproape papanaș",
+            "price": "49",
+            "description": "pain brioche | lapte | ou | unt | dulceață de vișine de casă | smântână dulce | zahăr",
+            "weight": "350 g",
+            "badge": "Nou",
+            "allergens": "ouă"
           }
         ]
       },
       {
-        "title": "Clatite",
+        "title": "Fără pâine",
+        "note": "Numai în weekend",
         "items": [
           {
-            "name": "Clatita Atena",
+            "name": "Clătită clasică",
             "price": "45",
-            "description": "aluat, feta & masline, ceapa verde, castravete, ardei copt",
-            "weight": "822 g",
-            "macros": "27g proteine, 42g grasimi, 75g carbo"
+            "description": "clătită sărată | prosciutto cotto | cașcaval Fontina | roșii confiate | mărar | ceapă caramelizată | ulei de trufe | parmezan",
+            "weight": "400 g",
+            "allergens": "gluten, ouă, lactate"
           },
           {
-            "name": "Clatita clasica",
+            "name": "Clătită Atena",
             "price": "45",
-            "description": "aluat, prosciutto cotto, fontina, rosii confiate, ceapa caramelizata, castravete",
-            "weight": "938 g",
-            "macros": "54g proteine, 42.3g grasimi, 71.6g carbo"
+            "description": "clătită sărată | brânză feta | măsline negre Kalamata | condimente | ardei gras copt | ceapă verde",
+            "weight": "400 g"
           }
         ]
       }
